@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Play Blackjack Online!</title>
+
+    <link href="css/basic-pg-console.log.css" rel="stylesheet">
+    <link href="css/blackjack.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <button id="tutorial-btn">?</button>
+
+    <div id="tutorial-div">
+        <h1>Blackjack: How to Play</h1>
+        <nav id="tutorial-nav">
+            <ul>
+                <li class="nav-btn selected-nav" data-page="1">Basics & Gameplay</li>
+                <li class="nav-btn" data-page="2">The Initial Deal</li>
+                <li class="nav-btn" data-page="3">Hitting and Standing</li>
+                <li class="nav-btn" data-page="4">Doubling Down</li>
+                <li class="nav-btn" data-page="5">Insurance</li>
+                <li class="nav-btn" data-page="6">Splitting</li>
+            </ul>
+        </nav>
+        <div class="tutorial-page active" id="page-1">
+            <h2>Basics and Gameplay</h2>
+            <ul>
+                <li>The objective of the game is to beat the dealer by getting your score as close as possible to 21 without going over 21.</li>
+                <li>Your score is the sum of the values of your cards. Number cards are worth their face value, face cards are worth 10, and Aces are worth 1 or 11, depending on what's best (this game will calculate that automatically).</li>
+                <li>You start off with $5,000 in chips and must place a bet before every game. Once you've decided on your bet, click the "Deal" button to start the initial deal.</li>
+            </ul>
+        </div>
+        <div class="tutorial-page" id="page-2">
+            <h2>The Initial Deal</h2>
+            <ul>
+                <li>The dealer will deal out four cards: two to you and two to himself. However, the dealer's second card will be face-down, so you don't know his exact score.</li>
+                <li>If you get exactly 21 right away, that's called Blackjack, and you win 1.5 times your original bet.</li>
+                <li>If the dealer has Blackjack, you lose your original bet. If you both have Blackjack, it's a push, and you don't win or lose anything.</li>
+                <li>If nobody has Blackjack, the game will continue.</li>
+            </ul>
+        </div>
+        <div class="tutorial-page" id="page-3">
+            <h2>Hitting and Standing</h2>
+            <ul>
+                <li>Once the initial deal is complete, you can choose to "Hit" or "Stand".</li>
+                <li>If you choose to "Hit", you will receive one additional card. If you choose to "Stand", you will not receive any additional cards.</li>
+                <li>You can hit as many times as you want before you stand, but if you go over 21, you bust and lose automatically.</li>
+                <li>If you're still under 21 and choose to stand, the dealer's turn will begin.</li>
+            </ul>
+        </div>
+        <div class="tutorial-page" id="page-4">
+            <h2>Doubling Down</h2>
+            <ul>
+                <li>Instead of hitting or standing, you can also double down.</li>
+                <li>If you do, your initial bet will be doubled, you'll automatically be dealt one more card, and the game ends.</li>
+                <li>The dealer will show his cards, and you will not have any more opportunities to hit or stand.</li>
+                <li>Only double down if you think you can win with exactly one more card!</li>
+            </ul>
+        </div>
+        <div class="tutorial-page" id="page-5">
+            <h2>Insurance</h2>
+            <ul>
+                <li>If the dealer has an Ace showing, his chances of getting Blackjack are higher.</li>
+                <li>To protect yourself against this, you can buy insurance, which costs half your original bet.</li>
+                <li>If the dealer does have Blackjack, you win your insurance bet and keep your original bet, so you break even and the game ends.</li>
+                <li>If the dealer does not have Blackjack, you lose your insurance bet and the game continues with your original bet.</li>
+            </ul>
+        </div>
+        <div class="tutorial-page" id="page-6">
+            <h2>Splitting</h2>
+            <ul>
+                <li>If you get two cards of the same value, you can split them into two separate hands.</li>
+                <li>Your bet will be doubled, and you will be dealt one additional card for each hand to make it complete.</li>
+                <li>You will take turns hitting or standing for each hand, just like in the initial deal.</li>
+                <li>You can either lose on both hands, win on both hands, or win on one hand and lose on the other.</li>
+            </ul>
+        </div>
+        <div id="tutorial-nav-btns">
+            <button id="prev-btn">&#8678;</button>
+            <button id="next-btn">&#8680;</button>
+        </div>
+    </div>
+
+    <div id="dealer-cards-div"></div>
+
+    <div id="player-cards-container">
+        <div id="split-cards-div"></div>
+        <div id="player-cards-div"></div>
+    </div>
+
+    <div id="chips-div-container">
+        <div id="chips-div"></div>
+        <div id="chips-div-2"></div>
+    </div>
+
+    <div id="out-div">
+        <h2>Welcome to Blackjack!</h2>
+        <h3 id="money-result-span">Start by placing your bet.</h3>
+    </div>
+
+    <div id="small-screen-msg">
+        <h2>Welcome to Blackjack!</h2>
+        <h3>Please play this game in full screen mode on a larger device. Mobile and small screen versions coming soon!<br>Thanks for your patience.</h3>
+    </div>
+
+    <div id="controls-div">
+        <span id="money-span"></span>
+        
+        <select id="bet-menu">
+            <option value="" disabled selected hidden>BET</option>
+            <option value="15" data-chips="10&5">$15</option>
+            <option value="20" data-chips="10&10">$20</option>
+            <option value="25" data-chips="25">$25</option>
+            <option value="35" data-chips="25&10">$35</option>
+            <option value="50" data-chips="50">$50</option>
+            <option value="75" data-chips="50&25">$75</option>
+            <option value="100" data-chips="100">$100</option>
+            <option value="125" data-chips="100&25">$125</option>
+            <option value="150" data-chips="100&50">$150</option>
+            <option value="200" data-chips="100&100">$200</option>
+            <option value="250" data-chips="100&100&50">$250</option>
+            <option value="300" data-chips="100&100&100">$300</option>
+            <option value="400" data-chips="100&100&100&100">$400</option>
+            <option value="500" data-chips="500">$500</option>
+            <option value="600" data-chips="500&100">$600</option>
+            <option value="750" data-chips="500&100&100&50">$750</option>
+            <option value="1000" data-chips="1000">$1,000</option>
+            <option value="1250" data-chips="1000&100&100&50">$1,250</option>
+            <option value="1500" data-chips="1000&500">$1,500</option>
+            <option value="1750" data-chips="1000&500&100&100&50">$1,750</option>
+            <option value="2000" data-chips="1000&1000">$2,000</option>
+            <option value="2250" data-chips="1000&1000&100&100&50">$2,250</option>
+            <option value="2500" data-chips="1000&1000&500">$2,500</option>
+            <option value="2750" data-chips="1000&1000&500&100&100&50">$2,750</option>
+            <option value="3000" data-chips="1000&1000&1000">$3,000</option>
+        </select>
+
+        <button id="deal-btn" class="enabled-btn disabled-btn" disabled>DEAL</button> 
+
+        <span id="player-score-span">Your Score: 0</span>
+        <span id="dealer-score-span">Dealer Shows: 0</span>
+    
+        <button id="hit-btn" class="enabled-btn disabled-btn" disabled>HIT</button> 
+        <button id="stand-btn" class="enabled-btn disabled-btn" disabled>STAND</button>
+        <button id="double-btn" class="enabled-btn disabled-btn" disabled>DOUBLE</button> 
+
+    </div>
+
+    <script src="js/blackjack.js"></script>
+
+</body>
+
+</html>

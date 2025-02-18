@@ -1,0 +1,415 @@
+body {
+    background-image: url('../images/blackjack-bg-final.png');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    background-color: #000;
+    margin-top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#small-screen-msg {
+    display: none;
+}
+
+#money-span, #dealer-score-span, #player-score-span {
+    padding: 0; /* Adjust padding */    
+    margin: 0;
+    width: fit-content;
+}
+
+#money-span {
+    font-size: 2.5rem;
+    z-index: 15;
+
+}
+
+#dealer-cards-div {
+    position: fixed;
+    top: 150px;
+    margin-bottom: 0;
+    height: fit-content;
+}
+
+
+#player-cards-container {
+    margin: auto;
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    width: fit-content;
+}
+    
+
+
+#dealer-score-span, #player-score-span {
+    border: none;
+}
+
+.active-player-hand > img {
+    filter: drop-shadow(12px 12px 7px rgba(255, 215, 0, 0.5)) drop-shadow(-12px -12px 7px rgba(255, 215, 0, 0.5)) drop-shadow(-12px 12px 7px rgba(255, 215, 0, 0.5)) drop-shadow(12px -12px 7px rgba(255, 215, 0, 0.5));
+}
+
+
+
+img {
+    width: 120px;
+    height: auto;
+    margin: 10px;
+    transform: perspective(80px) rotateX(10deg);   
+}
+
+#controls-div {
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    vertical-align: middle;
+    width: 100%;
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    height: auto;
+    z-index: 16; /* Add this line */
+}
+
+/* permanent properties of buttons regardless 
+of whether they are enabled or disabled */
+button, #bet-menu {
+    width: 120px; /* Set a fixed width for all buttons */
+    font-size: 0.9rem; /* Use a uniform font size */
+    font-weight: bold;
+    padding: 10px 12px; /* Adjust padding */
+    border-radius: 10px;    
+    border: none;
+    box-shadow: none;
+    margin: 1rem 0.5rem;
+    color: white;
+    background-color: #464;
+    white-space: nowrap;
+    text-transform: uppercase; /* Make all button text uppercase */
+}
+
+
+
+.enabled-btn {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.enabled-btn:hover {
+    background-color: #494;
+}
+
+.disabled-btn {
+    opacity: 0.3;
+    cursor: none;
+}
+
+.disabled-btn:hover {
+    background-color: #464;
+}
+
+div {
+    padding: 1.5rem;
+    min-width: fit-content;
+    margin: 1rem;
+    border-radius: 1.5rem;
+}
+
+#split-cards-div {
+    display: none;
+    text-align: center;
+    width: fit-content;
+}
+
+#player-cards-div {
+    text-align: center;
+    width: fit-content;
+}
+
+#out-div {
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    padding: 10px;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    min-width: 50%;
+    width: fit-content;
+    height: max-content;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;}
+
+
+div image {
+    height: 90%; 
+}
+
+span {
+    color: white;
+    width: 300px;
+    padding: 0.65rem;
+    font-family: sans-serif;
+    margin: 0 1rem;
+    border-radius: 1rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+#chips-div-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    vertical-align: middle;
+    width: 100%;
+    position: fixed;
+    bottom: 200px;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    z-index: 5;
+}
+
+#chips-div-2 {
+    z-index: 5;
+}
+
+h2 {
+    border: none;
+    text-align: center;
+    margin: 0;
+}
+
+#money-result-span {
+    width: fit-content;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 20;
+    margin: auto;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+#insurance-yes-btn, #insurance-no-btn, #split-yes-btn, #split-no-btn {
+    width: auto;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    z-index: 20;
+    cursor: pointer;
+}
+
+/* Add these new styles at the end of the file */
+#bet-menu {
+    position: relative;
+    z-index: 20;
+    appearance: none;
+    text-align: center;
+    background-color: white;
+    border: 2px solid #464;
+    color: #464;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#bet-menu:hover {
+    background-color: white;
+}
+
+#bet-menu:focus {
+    outline: none;
+    box-shadow: #464;
+}
+
+#bet-menu option {
+    background-color: white;
+    color: #464;
+    font-size: 1.1rem;
+}
+
+#deal-btn, #hit-btn, #stand-btn {
+    position: relative;
+    z-index: 3;
+}
+
+#tutorial-div {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 0;
+    border-radius: 2rem;
+    width: 60%;
+    height: 50%;
+    z-index: 30;
+}
+
+#tutorial-div h1 {
+    width: 100%;
+    position: absolute;
+    font-weight: bold;
+    text-align: right;
+    top: 0;
+    right: 20px;
+    background: linear-gradient(to right, #464, black);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-stroke: 0.5px white;
+
+}
+
+.tutorial-page {
+    display: none;
+}
+
+.active {
+    display: block;
+    position: absolute;
+    top: 40px;
+    right: 0px;
+    left: 140px;
+    width: 70%;
+    height: 200px;
+    z-index: 20;
+    text-align: left;
+}
+
+#tutorial-nav {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    width: 20%;
+    height: 100%;
+    z-index: 31;
+}
+
+#tutorial-nav ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    align-items: space-evenly;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    
+}
+
+#tutorial-nav ul li {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.selected-nav {
+    background-image: linear-gradient(to right, #464, rgba(0, 0, 0, 0.8));
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+#tutorial-nav-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    height: fit-content;
+    margin: 0;
+    width: fit-content;
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    z-index: 32;
+}
+
+#prev-btn, #next-btn {
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 100;
+    background-color: transparent;
+    color: #464;
+    font-weight: bold;
+    padding: 10px;
+    margin: 0;
+    width: fit-content;
+    height: fit-content;
+}
+
+@media (max-width: 1200px) {
+    body > * {
+        display: none !important;
+    }
+    #small-screen-msg {
+        display: block !important;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: 1rem;
+        color: white;
+        text-align: center;
+        line-height: 1.5;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 2rem;
+        border-radius: 1rem;
+        width: fit-content;
+        height: fit-content;
+    }
+}
+
+#tutorial-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: #464;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 100;
+}
+
+#tutorial-btn:hover {
+    background-color: #494;
+}
+
+.tutorial-page li {
+    margin: 1rem 0;
+}
